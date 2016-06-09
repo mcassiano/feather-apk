@@ -101,10 +101,8 @@ public class ResultAdapter extends BindableAdapter<JsonObject> {
                     .into(holder.pic);
         }
 
-        else {
-            Glide.clear(holder.pic);
-            Glide.with(getContext()).load(R.drawable.avatar_placeholder).into(holder.pic);
-        }
+        else
+            Glide.with(getContext()).load(R.drawable.avatar_placeholder_img).into(holder.pic);
 
 
     }
