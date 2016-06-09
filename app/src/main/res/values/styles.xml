@@ -21,6 +21,5 @@
     <color name="greyblue">#6a788d</color>
     <color name="greyblue_10">#0a6a788d</color>
     <color name="greyblue_30">#0c6a788d</color>
-    <color name="greyblue_5">#0a5a788d</color>
     <color name="white">@android:color/white</color>
 </resources>
