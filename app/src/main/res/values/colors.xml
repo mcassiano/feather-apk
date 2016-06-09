@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="charcoal_grey">#353f40</color>
+    <color name="charcoal_grey_dark">#2a3234</color>
+    <color name="charcoal_grey_80">#AF353f40</color>
+    <color name="charcoal_grey_two">#333338</color>
+    <color name="warm_grey_two">#949494</color>
+    <color name="medium_grey">#71726e</color>
 </resources>

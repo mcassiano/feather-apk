@@ -14,4 +14,8 @@
     <string name="progress_dialog">Carregando</string>
     <string name="loading_results">Carregando resultados. Por favor, aguarde.</string>
     <string name="empty">Vazio</string>
+    <string name="text_placeholder">Dilma Vana Rousseff (Belo Horizonte, 14 de dezembro de 1947) é uma economista e política brasileira, filiada no Partido dos Trabalhadores (PT) e presidente suspensa do Brasil.</string>
+    <string name="akas">Também conhecido como: %s</string>
+    <string name="facebook">Facebook</string>
+    <string name="title_detail_activity">Detalhes</string>
 </resources>

@@ -2,12 +2,14 @@ package cassiano.me.feather.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cassiano.me.feather.DocumentDetailActivity;
 import cassiano.me.feather.R;
 import cassiano.me.feather.service.ElasticSearchREST;
 import cassiano.me.feather.service.Queries;
@@ -150,9 +153,19 @@ public class MainActivity extends AppCompatActivity {
                         .get("hits")
                         .getAsJsonArray();
 
-                ResultAdapter adapter = new ResultAdapter(MainActivity.this, objs);
+                final ResultAdapter adapter = new ResultAdapter(MainActivity.this, objs);
 
                 searchResultsView.setAdapter(adapter);
+
+                searchResultsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(MainActivity.this, DocumentDetailActivity.class);
+                        intent.putExtra("document", adapter.getItem(position).toString());
+
+                        startActivity(intent);
+                    }
+                });
 
 
             }
@@ -260,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupElasticSearchClient() {
         client = new ElasticSearchREST();
-        client.setIndex("feather_v1");
+        client.setIndex("feather_v3");
     }
 
     @Override

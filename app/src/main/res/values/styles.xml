@@ -4,8 +4,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/charcoal_grey</item>
-        <item name="colorPrimaryDark">@color/charcoal_grey</item>
+        <item name="colorPrimaryDark">@color/charcoal_grey_dark</item>
         <item name="colorAccent">@color/white</item>
+        <!--<item name="android:textColorPrimary">@color/white</item>-->
+        <!--<item name="android:textColorSecondary">@color/white</item>-->
+
     </style>
 
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
