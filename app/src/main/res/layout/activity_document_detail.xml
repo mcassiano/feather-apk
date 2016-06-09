@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_document_detail"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="cassiano.me.feather.DocumentDetailActivity">
+    android:layout_height="wrap_content"
+    tools:context="cassiano.me.feather.ui.DocumentDetailActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar_container"
@@ -19,97 +20,106 @@
             />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/profile_header"
-        android:layout_below="@id/toolbar_container"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:background="@color/charcoal_grey_80"
-        android:layout_height="105dp">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/profile"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:layout_marginTop="100dp"
-        android:padding="20dp"
-        android:paddingBottom="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/avatar_placeholder_img"
-            android:layout_width="96dp"
-            android:layout_height="96dp" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:maxLines="2"
-            android:textColor="@color/charcoal_grey_two"
-            android:layout_marginTop="14dp"
-            android:textSize="17sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/short_description"
-            android:gravity="left"
-            android:maxLines="2"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/warm_grey_two"
-            android:layout_marginTop="2dp"
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
     <ScrollView
+        android:layout_below="@id/toolbar_container"
         android:overScrollMode="never"
         android:scrollbarStyle="outsideInset"
         android:layout_marginTop="0dp"
-        android:padding="22dp"
-        android:paddingTop="0dp"
-        android:layout_below="@id/profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/paragraph"
-                android:textColor="@color/medium_grey"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
             <LinearLayout
-                android:id="@+id/social_links"
-                android:layout_marginTop="21dp"
+                android:id="@+id/profile_header"
+
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:background="@color/charcoal_grey_80"
+                android:layout_height="105dp">
 
-            <TextView
-                android:id="@+id/akas"
-                android:layout_marginTop="21dp"
-                android:maxLines="3"
-                android:textColor="@color/greyblue"
-                android:textSize="12sp"
-                android:text="@string/akas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/profile"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:layout_marginTop="45dp"
+                android:padding="20dp"
+                android:paddingBottom="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/avatar_placeholder_img"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:textColor="@color/charcoal_grey_two"
+                    android:layout_marginTop="14dp"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/short_description"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/warm_grey_two"
+                    android:layout_marginTop="2dp"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="22dp"
+                android:paddingTop="0dp"
+                android:layout_below="@id/profile"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/paragraph"
+                    android:textColor="@color/medium_grey"
+                    android:gravity="start"
+                    android:textAlignment="gravity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/social_links"
+                    android:layout_marginTop="21dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/akas"
+                    android:layout_marginTop="21dp"
+                    android:maxLines="3"
+                    android:textColor="@color/greyblue"
+                    android:textSize="12sp"
+                    android:text="@string/akas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
 
     </ScrollView>
 

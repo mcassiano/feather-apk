@@ -1,4 +1,4 @@
-package cassiano.me.feather;
+package cassiano.me.feather.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +23,7 @@ import java.util.HashSet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cassiano.me.feather.R;
 import cassiano.me.feather.ui.Util;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;

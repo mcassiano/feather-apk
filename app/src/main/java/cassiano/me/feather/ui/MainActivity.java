@@ -27,7 +27,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cassiano.me.feather.DocumentDetailActivity;
 import cassiano.me.feather.R;
 import cassiano.me.feather.service.ElasticSearchREST;
 import cassiano.me.feather.service.Queries;
