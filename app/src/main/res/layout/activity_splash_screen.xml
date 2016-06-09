@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/charcoal_grey"
-    tools:context="cassiano.me.feather.SplashScreen">
+    tools:context="cassiano.me.feather.ui.SplashScreen">
 
     <ImageView android:src="@drawable/group"
         android:layout_width="wrap_content"

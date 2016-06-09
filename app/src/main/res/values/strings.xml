@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Feather</string>
     <string name="logo_splash_screen">Logo splash screen</string>
+    <string name="search">Search</string>
+    <string name="example_title_result_item">Example title</string>
+    <string name="example_subtitle_result_item">Example description</string>
+    <string name="accessibility_icone_globo_score">imagem do resultado</string>
+    <string name="avenir_book">fonts/Avenir-Book.ttf</string>
+    <string name="avenir_light">fonts/Avenir-Light.ttf</string>
+    <string name="description_missing">Resumo não especificado.</string>
+    <string name="missing_title">Título não disponível</string>
+    <string name="english">"inglês"</string>
+    <string name="query_s">QUERY: %s</string>
+    <string name="progress_dialog">Carregando</string>
+    <string name="loading_results">Carregando resultados. Por favor, aguarde.</string>
+    <string name="empty">Vazio</string>
 </resources>

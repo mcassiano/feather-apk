@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout android:paddingStart="20dp"
+        android:paddingEnd="11dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="4dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                fontPath="@string/avenir_book"
+                android:text="@string/example_title_result_item"
+                android:textColor="@color/greyblue"
+                android:textSize="16sp"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/short_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                fontPath="@string/avenir_light"
+                android:textColor="@color/greyblue"
+                android:textSize="12sp"
+                android:text="@string/example_subtitle_result_item"
+                />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/greyblue"
+                android:drawableStart="@drawable/score"
+                android:drawablePadding="5dp"
+                fontPath="@string/avenir_light"
+                android:textSize="12sp"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:paddingLeft="5dp"
+            android:id="@+id/pic"
+            android:src="@drawable/avatar_placeholder"
+            android:layout_gravity="end"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="@string/accessibility_icone_globo_score"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/greyblue_10"
+        />
+</LinearLayout>

@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/charcoal_grey</item>
-        <item name="colorPrimaryDark">@color/greyblue</item>
-        <item name="colorAccent">@color/greyblue</item>
+        <item name="colorPrimaryDark">@color/charcoal_grey</item>
+        <item name="colorAccent">@color/white</item>
     </style>
 
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
@@ -16,4 +16,8 @@
     </style>
 
     <color name="greyblue">#6a788d</color>
+    <color name="greyblue_10">#0a6a788d</color>
+    <color name="greyblue_30">#0c6a788d</color>
+    <color name="greyblue_5">#0a5a788d</color>
+    <color name="white">@android:color/white</color>
 </resources>
