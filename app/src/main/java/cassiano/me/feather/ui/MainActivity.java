@@ -10,8 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -23,7 +26,9 @@ import com.google.gson.reflect.TypeToken;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.query_container)
     TextView queryContainer;
+
+    @BindView(R.id.spinner)
+    Spinner catAggType;
+
+    @BindView(R.id.aggsResult)
+    LinearLayout aggsResult;
 
     private boolean running;
 
@@ -141,9 +152,17 @@ public class MainActivity extends AppCompatActivity {
 
                 if (total <= 0) {
                     clearAdapter();
+                    aggsResult.removeAllViews();
+                    catAggType.setAdapter(null);
                     nothingFoundView.setVisibility(View.VISIBLE);
                     return;
                 }
+
+                Double maxScore = result.
+                        getAsJsonObject()
+                        .get("hits")
+                        .getAsJsonObject()
+                        .get("max_score").getAsDouble();
 
                 JsonArray objs = result
                         .getAsJsonObject()
@@ -152,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                         .get("hits")
                         .getAsJsonArray();
 
-                final ResultAdapter adapter = new ResultAdapter(MainActivity.this, objs);
+                final ResultAdapter adapter = new ResultAdapter(MainActivity.this, objs, maxScore);
 
                 searchResultsView.setAdapter(adapter);
 
@@ -163,6 +182,49 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("document", adapter.getItem(position).toString());
 
                         startActivity(intent);
+                    }
+                });
+
+                JsonObject aggregations = result.getAsJsonObject().get("aggregations").getAsJsonObject();
+
+                final String[] aggsTypesId = {"entity_descriptors", "catAggGnd", "catAggMI", "catAggChi"};
+                final String[] aggsTypes = {"Entidade (TF-IDF)", "Categoria (GND)", "Categoria (MI)", "Categoria (Chi)"};
+                final HashMap<String, JsonArray> aggBuckets = new HashMap<>();
+
+                for (String aggType : aggsTypesId) {
+                    JsonObject agg = aggregations.get(aggType).getAsJsonObject();
+                    JsonArray buckets = agg.get("buckets").getAsJsonArray();
+                    aggBuckets.put(aggType, buckets);
+                }
+
+                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(MainActivity.this,
+                        android.R.layout.simple_spinner_dropdown_item, aggsTypes);
+
+                catAggType.setAdapter(spinnerAdapter);
+                catAggType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String type = aggsTypesId[position];
+                        JsonArray buckets = aggBuckets.get(type);
+
+                        aggsResult.removeAllViews();
+
+                        for (int i = 0; i < buckets.size(); i++) {
+
+                            String key = buckets.get(i).getAsJsonObject().get("key").getAsString();
+                            Double score = buckets.get(i).getAsJsonObject().get("score").getAsDouble();
+
+                            TextView tx = new TextView(MainActivity.this);
+                            tx.setText(String.format(Locale.getDefault(), "%s (%.4f)", key, score));
+
+                            aggsResult.addView(tx);
+
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
                     }
                 });
 
@@ -205,6 +267,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (searchView.isSearchOpen()) {
             searchView.closeSearch();
+            if (searchResultsView.getAdapter().getCount() <= 0)
+                nothingFoundView.setVisibility(View.VISIBLE);
         } else {
             super.onBackPressed();
         }

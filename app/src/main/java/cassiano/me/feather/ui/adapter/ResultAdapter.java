@@ -20,10 +20,12 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 public class ResultAdapter extends BindableAdapter<JsonObject> {
 
     private JsonArray data;
+    Double maxScore;
 
-    public ResultAdapter(Context context, JsonArray data) {
+    public ResultAdapter(Context context, JsonArray data, Double maxScore) {
         super(context);
         this.data = data;
+        this.maxScore = maxScore;
     }
 
     @Override
@@ -92,7 +94,7 @@ public class ResultAdapter extends BindableAdapter<JsonObject> {
             holder.description.setText(R.string.description_missing);
 
 
-        holder.score.setText(String.valueOf(result.get("_score").getAsDouble()));
+        holder.score.setText(String.valueOf(result.get("_score").getAsDouble()/maxScore));
 
         if (source.has("thumbnail") && !source.get("thumbnail").isJsonNull()) {
             Glide.with(getContext())

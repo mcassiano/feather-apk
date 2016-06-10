@@ -24,10 +24,16 @@ public class Queries {
 
         String query = "{\n" +
                 "  \"aggs\": {\n" +
+                "\"entity_descriptors\": {\n" +
+                "\t\t\"significant_terms\": {\n" +
+                "\t\t\t\"field\": \"wikipedia_entry.text.Intro.text.analyzed_text\",\n" +
+                "\t\t\t\"size\": 5\n" +
+                "\t\t}\n" +
+                "\t},"+
                 "    \"catAggGnd\": {\n" +
                 "      \"significant_terms\": {\n" +
-                "        \"field\": \"wikipedia_entry.categories.raw\",\n" +
-                "        \"size\": 3,\n" +
+                "        \"field\": \"wikipedia_entry.categories\",\n" +
+                "        \"size\": 5,\n" +
                 "        \"gnd\": {\n" +
                 "          \"background_is_superset\": false\n" +
                 "        }\n" +
@@ -35,8 +41,8 @@ public class Queries {
                 "    },\n" +
                 "    \"catAggChi\": {\n" +
                 "      \"significant_terms\": {\n" +
-                "        \"field\": \"wikipedia_entry.categories.raw\",\n" +
-                "        \"size\": 3,\n" +
+                "        \"field\": \"wikipedia_entry.categories\",\n" +
+                "        \"size\": 5,\n" +
                 "        \"chi_square\": {\n" +
                 "          \"background_is_superset\": false,\n" +
                 "          \"include_negatives\": true\n" +
@@ -45,8 +51,8 @@ public class Queries {
                 "    },\n" +
                 "    \"catAggMI\": {\n" +
                 "      \"significant_terms\": {\n" +
-                "        \"field\": \"wikipedia_entry.categories.raw\",\n" +
-                "        \"size\": 3,\n" +
+                "        \"field\": \"wikipedia_entry.categories\",\n" +
+                "        \"size\": 5,\n" +
                 "        \"mutual_information\": {\n" +
                 "          \"background_is_superset\": false,\n" +
                 "          \"include_negatives\": true\n" +
